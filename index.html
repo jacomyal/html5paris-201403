@@ -20,6 +20,13 @@
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
+    <!-- Custom rules -->
+    <style type="text/css">
+      .right {
+        text-align: right;
+      }
+    </style>
+
     <!-- If the query includes 'print-pdf', use the PDF print sheet -->
     <script>
       document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
@@ -80,9 +87,12 @@
 
           <section data-background="http://farm4.staticflickr.com/3284/2648657067_f9f65ffcb7_o.jpg">
             <h3 style="background: rgba(0, 0, 0, 0.6)">
-              <blockquote cite="http://sametmax.com/un-gros-troll-de-plus-sur-javacscript/#comment-21201" style="background: none">
+              <blockquote cite="http://sametmax.com/un-gros-troll-de-plus-sur-javacscript/#comment-21201" style="background: none; line-height: 50px;">
                 &ldquo;JavaScript est un langage exigeant faussement facile qui nécessite d’aimer le bricolage, <strong>l’artisanat</strong>.&ldquo;
               </blockquote>
+              <p>
+                <small><a href="http://twitter/olivierpenhoat"></a>@olivierpenhoat (<a href="http://sametmax.com/un-gros-troll-de-plus-sur-javacscript/#comment-21201">source</a>)</small>
+              </p>
             </h3>
           </section>
 
@@ -97,9 +107,13 @@
         </section>
 
         <section>
+          <h3>Qu'est-ce qu'il reste?</h3>
+        </section>
+
+        <section>
           <section>
-            <h4>Un référentiel:</h4>
             <h3>L'API de dessin d'ActionScript 3</h3>
+            <h4 class="fragment">(pour l'exemple, bien sûr)</h4>
           </section>
 
           <section>
@@ -392,21 +406,21 @@ data.forEach(function(value, i) {
             <h3>Comment choisir</h3>
             <il>
               <li>Si c'est possible, utiliser le DOM + CSS3</li>
-              <li>Si c'est possible, utiliser Canvas</li>
+              <li>S'il y a beaucoup d'éléments, utiliser Canvas</li>
               <li>S'il y a du mouse-over et des courbes, utiliser SVG</li>
             </il>
           </section>
 
           <section>
             <h3>Il est pratiquement toujours possible de faire mieux qu'avec les outils en combinant ces différentes solutions</h3>
-            <h4>même si ça demande un inverstissement certain.</h4>
+            <h4>même si ça demande un investissement certain.</h4>
           </section>
 
           <section>
             <h3>Crédits:</h3>
             <il>
               <li>Présentation réalisée avec <a href="http://lab.hakim.se/reveal-js">reveal.js</a></li>
-              <li>Photo bricolage par <a href="http://www.flickr.com/photos/geoffreydorne">Geoffrey Dorne</a> (<a href="http://creativecommons.org/licenses/by-nc-sa/2.0/deed.fr">license</a>)</li>
+              <li>Photo bricolage par <a href="http://www.flickr.com/photos/geoffreydorne">Geoffrey Dorne</a> (<a href="http://creativecommons.org/licenses/by-nc-sa/2.0/deed.fr">licence</a>)</li>
             </il>
 
             <br>
@@ -418,6 +432,11 @@ data.forEach(function(value, i) {
               <li><a href="https://github.com/quidmonkey/particle_test">Un autre benchmark avec des particules</a></li>
               <li><a href="http://js1k.com/">JS1K</a> (pour voir la puissance de Canvas)</li>
             </il>
+          </section>
+
+          <section>
+            <h3>Merci beaucoup!</h3>
+            <h4><a href="http://jacomyal.github.io/html5paris-201403">http://jacomyal.github.io/html5paris-201403</a></h4>
           </section>
         </section>
 
