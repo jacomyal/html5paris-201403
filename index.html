@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>reveal.js - The HTML Presentation Framework</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h3>La dataviz</h3>
+          <h1>sans lib</h1>
+
+          <br>
+
+          <p>
+            <small>par <a href="http://jcml.io">Alexis Jacomy</a> / <a href="http://twitter.com/jacomyal">@jacomyal</a></small>
+            <br>
+            <small>ingénieur JavaScript frontend @ <a href="http://www.medialab.sciences-po.fr/fr">Sciences-Po médialab</a></small>
+          </p>
+        </section>
+
+        <section>
+          <section>
+            <h3>Une visualisation de données c'est quoi ?</h3>
+          </section>
+
+          <section>
+            <h3>Pour le designer</h3>
+            <il>
+              <li>Une bonne connaissance du domaine</li>
+              <li>Des données intéressantes</li>
+              <li>Une histoire à raconter</li>
+              <li>Un bon design</li>
+            </il>
+          </section>
+
+          <section>
+            <h3>Pour le développeur</h3>
+            <il>
+              <li class="fragment">Des maths</li>
+              <li class="fragment">Du dessin</li>
+            </il>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Pourquoi ne pas utiliser les outils existants</h3>
+          </section>
+
+          <section data-background="http://farm4.staticflickr.com/3284/2648657067_f9f65ffcb7_o.jpg">
+            <h3 style="background: rgba(0, 0, 0, 0.6)">
+              <blockquote cite="http://sametmax.com/un-gros-troll-de-plus-sur-javacscript/#comment-21201" style="background: none">
+                &ldquo;JavaScript est un langage exigeant faussement facile qui nécessite d’aimer le bricolage, <strong>l’artisanat</strong>.&ldquo;
+              </blockquote>
+            </h3>
+          </section>
+
+          <section>
+            <h3>Et aussi</h3>
+            <il>
+              <li class="fragment">Pour mieux comprendre comment fonctionnent les outils</li>
+              <li class="fragment">Quand aucun outil existant ne correspond vraiment</li>
+              <li class="fragment">Pour avoir plus de contrôle sur l'application</li>
+            </il>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h4>Un référentiel:</h4>
+            <h3>L'API de dessin d'ActionScript 3</h3>
+          </section>
+
+          <section>
+            <h3>Les features</h3>
+            <il>
+              <li class="fragment">Une arborescence (la classe <code>DisplayObjectContainer</code>)</li>
+              <li class="fragment">Du dessin matriciel (la classe <code>BitmapData</code>)</li>
+              <li class="fragment">Du dessin vectoriel (la classe <code>Graphics</code>)</li>
+              <li class="fragment">La classe <code>Sprite</code> qui fait un peu tout ça</li>
+            </il>
+          </section>
+
+          <section>
+            <h3>en pratique</h3>
+            <h2>on met des <code>Sprites</code> partout</h2>
+          </section>
+
+          <section>
+            <h3>Un exemple de code AS3</h3>
+
+            <pre><code class="actionscript" data-trim style="font-size: 18px; margin-top: 20px;">
+// Créer et afficher un sprite:
+var sprite:Sprite = new Sprite();
+parentSprite.addChild(sprite);
+
+// Dessiner sur le sprite:
+sprite.graphics.beginFill(0x666666);
+sprite.graphics.drawCircle(100, 100, 50);
+sprite.graphics.endFill();
+
+// Tracer le sprite sur une Bitmap:
+var bitmapData:BitmapData = new BitmapData(200, 200, true, 0x0);
+bitmapData.draw(sprite);
+var bitmap:Bitmap = new Bitmap(bitmapData);
+
+// Remplacer le rendu par la Bitmap:
+parentSprite.removeChild(sprite);
+parentSprite.addChild(bitmap);
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Au final</h3>
+            <il>
+              <li class="fragment">L'arbre permet de bien stucturer la scène</li>
+              <li class="fragment">La gestion du vectoriel facilite l'interactivité</li>
+              <li class="fragment">On peut cacher des éléments pour gagner en perfs</li>
+              <li class="fragment">Et tout ça grâce à une API assez simple et unifiée</li>
+            </il>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Canvas</h3>
+          </section>
+
+          <section>
+            <h3>C'est quoi?</h3>
+            <il>
+              <li class="fragment">Une balise HTML</li>
+              <li class="fragment">Une API JavaScript</li>
+              <li class="fragment">La technologie HTML5 dédiée au dessin matriciel</li>
+            </il>
+          </section>
+
+          <section>
+            <h3>À quoi ça sert?</h3>
+            <il>
+              <li class="fragment">L'API JavaScript permet de dessiner sur le canvas</li>
+              <li class="fragment">On peut aussi modifier directement la matrice</li>
+              <li class="fragment">L'état du canvas n'est stocké que dans sa matrice</li>
+            </il>
+          </section>
+
+          <section>
+            <h3>Un exemple d'utilisation de Canvas</h3>
+
+            <pre><code class="javascript" data-trim style="font-size: 18px; margin-top: 20px;">
+// Récupérer le contexte du canvas:
+var canvas = document.getElementById('myCanvas'),
+    context = canvas.getContext('2d');
+
+// Dessiner sur le canvas:
+context.fillStyle = '#666666';
+for (var i = 0; i &lt; 10000; i++)
+  context.fillRect(
+    Math.floor(Math.random() * canvas.width),
+    Math.floor(Math.random() * canvas.height),
+    1,
+    1
+  );
+            </code></pre>
+
+            <a href="http://jsfiddle.net/Akf4p/">jsfiddle</a>
+          </section>
+
+          <section>
+            <h3>En pratique</h3>
+            <il>
+              <li class="fragment">On retrace tout à la moindre modification</li>
+              <li class="fragment">On cache avec des <code>ImageData</code> ce qui est coûteux</li>
+              <li class="fragment">On observe nous même la souris pour gérer l'interactivité</li>
+            </il>
+          </section>
+
+          <section>
+            <h3>C'est bien</h3>
+            <il>
+              <li class="fragment">Pour afficher beaucoup d'éléments</li>
+              <li class="fragment">Pour bidouiller le rendu au pixel</li>
+            </il>
+
+            <br>
+
+            <h3 class="fragment">C'est mal</h3>
+            <il>
+              <li class="fragment">Pour le rendu des textes</li>
+              <li class="fragment">Pour tout ce qui est interactif</li>
+              <li class="fragment">Lorsque la surface d'affichage est grande</li>
+            </il>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>SVG</h3>
+          </section>
+
+          <section>
+            <h3>C'est quoi?</h3>
+            <il>
+              <li class="fragment">Un format XML pour décrire des dessins vectoriels</li>
+              <li class="fragment">La technologie pour faire du dessin vectoriel sur le Web</li>
+            </il>
+          </section>
+
+          <section>
+            <h3>À quoi ça sert?</h3>
+            <il>
+              <li class="fragment">Ça permet de tracer des formes vectorielles</li>
+              <li class="fragment">Ça fonctionne comme le DOM</li>
+              <li class="fragment">Le SVG a sa propre arborescence</li>
+            </il>
+          </section>
+
+          <section>
+            <h3>Un exemple d'utilisation de SVG</h3>
+
+            <pre><code class="xml" data-trim style="font-size: 18px; margin-top: 20px;">
+&lt;svg version=&quot;1.1&quot;
+     xmlns=&quot;http://www.w3.org/2000/svg&quot;
+     width=&quot;400&quot; height=&quot;300&quot;&gt;
+  &lt;circle id=&quot;myCircle&quot; cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;50&quot; /&gt;
+&lt;/svg&gt;
+            </code></pre>
+
+            <pre><code class="javascript" data-trim style="font-size: 18px; margin-top: 20px;">
+// Récupérer le cercle SVG:
+var circle = document.getElementById('myCircle');
+
+// Déplacer le cercle:
+circle.setAttribute('cx', 50);
+circle.setAttribute('cy', 50);
+            </code></pre>
+
+            <a href="http://jsfiddle.net/HgE9h/">jsfiddle</a>
+          </section>
+
+          <section>
+            <h3>En pratique</h3>
+            <il>
+              <li class="fragment">On créé d'abord des éléments, qu'on modifie ensuite</li>
+              <li class="fragment">On gère tout comme du DOM (CSS, events, etc...)</li>
+            </il>
+          </section>
+
+          <section>
+            <h3>C'est bien</h3>
+            <il>
+              <li class="fragment">Pour manipuler des contenus vectoriels externes</li>
+              <li class="fragment">Pour créer des applis très interactives</li>
+            </il>
+
+            <br>
+
+            <h3 class="fragment">C'est mal</h3>
+            <il>
+              <li class="fragment">Pour afficher un grand nombre d'éléments</li>
+            </il>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>DOM / CSS3</h3>
+          </section>
+
+          <section>
+            <h3>C'est quoi?</h3>
+            <il>
+              <li class="fragment">CSS3 permet d'afficher des triangles, des rectangles, des ronds...</li>
+              <li class="fragment">Beaucoup de graphiques sont traçables simplement grâce à CSS3</li>
+            </il>
+          </section>
+
+          <section>
+            <h3>Mais pourquoi ne pas utiliser SVG???</h3>
+            <il>
+              <li class="fragment">Le navigateur est optimisé pour le rendu du DOM</li>
+              <li class="fragment">C'est la solution la plus portable</li>
+            </il>
+          </section>
+
+          <section>
+            <h3>Un cas d'usage</h3>
+
+            <pre><code class="css" data-trim style="font-size: 18px; margin-top: 20px;">
+#barchart {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.bar {
+  bottom: 0;
+  width: 10px;
+  position: absolute;
+  background: #666666;
+}
+            </code></pre>
+
+            <pre><code class="javascript" data-trim style="font-size: 18px; margin-top: 20px;">
+// Les données et le container:
+var data = [12, 3, 189, 134, 56],
+    barchart = document.getElementById('barchart'),
+    width = barchart.offsetWidth,
+    height = barchart.offsetHeight,
+    barWidth = Math.floor(width / data.length) - 1;
+
+// On trouve le maximum:
+var max = Math.max.apply(Math, data);
+
+// On trace le graphique:
+data.forEach(function(value, i) {
+  var bar = document.createElement('DIV');
+  barchart.appendChild(bar);
+
+  bar.setAttribute('class', 'bar');
+  bar.style.width = barWidth + 'px';
+  bar.style.left = (i * (barWidth + 1)) + 'px';
+  bar.style.top = (width - value * width / max) + 'px';
+});
+            </code></pre>
+
+            <a href="http://jsfiddle.net/9jScm/1/">jsfiddle</a>
+          </section>
+
+          <section>
+            <h3>En pratique</h3>
+            <il>
+              <li class="fragment">Comme pour SVG: on garde des références sur les éléments</li>
+              <li class="fragment">Parfait tant qu'il n'y a pas de courbes de Bézier</li>
+            </il>
+          </section>
+
+          <section>
+            <h3>C'est bien</h3>
+            <il>
+              <li class="fragment">Car c'est <strong>très</strong> portable</li>
+              <li class="fragment">Car on bénéficie des transitions CSS, etc...</li>
+            </il>
+
+            <br>
+
+            <h3 class="fragment">C'est mal</h3>
+            <il>
+              <li class="fragment">Pour afficher un très grand nombre d'éléments</li>
+              <li class="fragment">Parce que ça ne marche pas partout</li>
+            </il>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Conclusion</h3>
+          </section>
+
+          <section>
+            <h3>Comment choisir</h3>
+            <il>
+              <li>Si c'est possible, utiliser le DOM + CSS3</li>
+              <li>Si c'est possible, utiliser Canvas</li>
+              <li>S'il y a du mouse-over et des courbes, utiliser SVG</li>
+            </il>
+          </section>
+
+          <section>
+            <h3>Il est pratiquement toujours possible de faire mieux qu'avec les outils en combinant ces différentes solutions</h3>
+            <h4>même si ça demande un inverstissement certain.</h4>
+          </section>
+
+          <section>
+            <h3>Crédits:</h3>
+            <il>
+              <li>Présentation réalisée avec <a href="http://lab.hakim.se/reveal-js">reveal.js</a></li>
+              <li>Photo bricolage par <a href="http://www.flickr.com/photos/geoffreydorne">Geoffrey Dorne</a> (<a href="http://creativecommons.org/licenses/by-nc-sa/2.0/deed.fr">license</a>)</li>
+            </il>
+
+            <br>
+
+            <h3>Quelques liens:</h3>
+            <il>
+              <li><a href="http://dry.ly/data-visualization-with-javascript-without-d3">&quot;Data Visualization with JavaScript without D3&quot;</a></li>
+              <li><a href="http://www.themaninblue.com/writing/perspective/2010/03/22/">Le très bon benchmark de TheManInBlue</a></li>
+              <li><a href="https://github.com/quidmonkey/particle_test">Un autre benchmark avec des particules</a></li>
+              <li><a href="http://js1k.com/">JS1K</a> (pour voir la puissance de Canvas)</li>
+            </il>
+          </section>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: 'night', // available themes are in /css/theme
+        transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
